@@ -13,6 +13,8 @@ Execute o aplicativo frontend localmente usando o VS Code
 
 ## ng serve
 
+## running...
+
 ## Servidor de Desenvolvimento
 
 Execute `ng serve` para subir a aplicação. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
