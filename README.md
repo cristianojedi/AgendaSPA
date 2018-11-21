@@ -1,27 +1,48 @@
 # AgendaSPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
-## Development server
+O AgendaSPA é um aplicativo Angular frontend e para executar este aplicativo você precisa baixar o aplicativo backend chamado "Agenda" disponível no meu repositório github.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Siga os passos abaixo:
 
-## Code scaffolding
+1) Baixe o aplicativo frontend AgendaSPA
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2) Baixe o aplicativo backend Agenda
+
+3) Execute o aplicativo backend localmente usando o Visual Studio 2017
+
+4) Execute o aplicativo frontend localmente usando o VS Code
+
+## ng build
+
+![agendaspa1](https://user-images.githubusercontent.com/32333301/48852230-10f16b80-ed94-11e8-92fd-434515d62258.png)
+
+## ng serve
+
+![agendaspa2](https://user-images.githubusercontent.com/32333301/48852276-26ff2c00-ed94-11e8-8847-2f13f31eacc3.png)
+
+## running...
+
+![agendaspa3](https://user-images.githubusercontent.com/32333301/48852289-2c5c7680-ed94-11e8-9cd0-89b0c4edf6c8.png)
+
+## Servidor de Desenvolvimento
+
+Execute `ng serve` para subir a aplicação. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Execute `ng build` para construir o projeto. Os artefatos de construção serão armazenados no diretório `dist/`. Use o sinalizador `--prod` para uma construção de produção.
 
-## Running unit tests
+## Mais Informações
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para obter mais ajuda sobre o Angular CLI, use `ng help` ou vá conferir o [Angular CLI README] (https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Running end-to-end tests
+## Contatos
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Cristiano Rocha
 
-## Further help
+E-mail: cristianojedi@gmail.com
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Linkedin: <a href="https://www.linkedin.com/in/cristiano-m%C3%A1rio-de-ara%C3%BAjo-rocha-548367160/" target="_blank">Cristiano Rocha</a>
+
