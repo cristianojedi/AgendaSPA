@@ -4,10 +4,15 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 O AgendaSPA é um aplicativo Angular frontend e para executar este aplicativo você precisa baixar o aplicativo backend chamado "Agenda" disponível no meu repositório github.
 
-Baixe o aplicativo frontend AgendaSPA
-Baixe o aplicativo backend Agenda
-Execute o aplicativo backend localmente usando o Visual Studio 2017
-Execute o aplicativo frontend localmente usando o VS Code
+Siga os passos abaixo:
+
+1) Baixe o aplicativo frontend AgendaSPA
+
+2) Baixe o aplicativo backend Agenda
+
+3) Execute o aplicativo backend localmente usando o Visual Studio 2017
+
+4) Execute o aplicativo frontend localmente usando o VS Code
 
 ## ng build
 
