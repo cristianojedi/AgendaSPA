@@ -1,8 +1,15 @@
-<h4>Organize sua própria agenda</h4>
+<h4>Faça seu cadastro para usar o sistema</h4>
 <hr />
 
-<form novalidate (ngSubmit)="adicionarOrganizador()" [formGroup]="inscricaoFormGroup">
+<form novalidate (ngSubmit)="adicionarUsuario()" [formGroup]="inscricaoFormGroup">
   <div class="form-horizontal">
+
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+      <h3 id="msgRetorno">Alguma coisa deu errado!</h3>
+      <ul>
+        <li *ngFor="let erro of errors">{{ erro }}</li>
+      </ul>
+    </div>
 
     <div class="form-group" [ngClass]="{'has-error': displayMessage.nome}" >
       <label class="col-md-2 control-label">Nome Completo</label>
@@ -56,7 +63,7 @@
 
     <div class="form-group">
       <div class="col-md-4 col-md-offset-2">
-        <button class="btn btn-success" id="Registrar" type="submit" [disabled]="!this.inscricaoFormGroup.valid" >Registrar</button>
+        <button class="btn btn-success" id="btnCadastrar" type="submit" [disabled]="!this.inscricaoFormGroup.valid" >Cadastrar</button>
       </div>
     </div>
   </div>

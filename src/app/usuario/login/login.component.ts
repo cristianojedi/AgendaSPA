@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef, ViewContainerRef } from '@angular/core';
-import { ReactiveFormsModule, FormArray, FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormControlName } from '@angular/forms';
 import { Router } from "@angular/router";
 
 // Foi necessário, para os imports abaixo, instalar: npm install --save rxjs-compat
@@ -14,21 +14,22 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { CustomValidators, CustomFormsModule } from 'ng2-validation'
 
-import { Usuario } from '../models/usuario';
+import { Login } from '../models/login';
 import { GenericValidator } from "../../utils/generic.form.validator";
 import { UsuarioService } from "../../services/usuario.service";
 
 @Component({
-  selector: 'app-inscricao',
-  templateUrl: './inscricao.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: []
 })
-export class InscricaoComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  public inscricaoFormGroup: FormGroup;
+  public loginForm: FormGroup;
 
   // Objeto que representa os dados
-  public usuario: Usuario;
+  public login: Login;
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
   public displayMessage: { [key: string]: string } = {};
@@ -39,15 +40,6 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
               private router: Router) {
     
     this.validationMessages = {
-      nome: {
-        required: 'O Nome é obrigatório',
-        minlength: 'O Nome precisa ter no mínimo 2 caracteres',
-        maxlength: 'O Nome precisa ter no máximo 50 caracteres'
-      },
-      cpf: {
-        required: 'O CPF é obrigatório',
-        rangeLength: 'O CPF deve conter 11 caracteres'
-      },
       email: {
         required: 'O E-mail é obrigatório',
         email: 'O E-mail é inválido',
@@ -58,31 +50,19 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
         required: 'A Senha é obrigatória',
         minlength: 'A Senha precisa ter no mínimo 6 caracteres',
         maxlength: 'A Senha precisa ter no máximo 20 caracteres'
-      },
-      senhaConfirmacao: {
-        required: 'A Senha Confirmação é obrigatória',
-        minlength: 'A Senha Confirmação precisa ter no mínimo 6 caracteres',
-        maxlength: 'A Senha Confirmação precisa ter no máximo 20 caracteres',
-        equalTo: 'A Senha Confirmação deve ser igual a Senha'
       }
     };
 
     this.genericValidator = new GenericValidator(this.validationMessages);
-    this.usuario = new Usuario();
+    this.login = new Login();
   }
 
   ngOnInit() {
-    let senha = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
-    let senhaConfirmacao = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20), CustomValidators.equalTo(senha)]);
-
     // Dados de preenchimento do formulário
     // Os campos abaixo são os itens do formulário
-    this.inscricaoFormGroup = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-        cpf: ['', [Validators.required, CustomValidators.rangeLength([11, 11])]],
-        email: ['', [Validators.required, CustomValidators.email, Validators.minLength(6), Validators.maxLength(150)]],
-        senha: senha,
-        senhaConfirmacao: senhaConfirmacao
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, CustomValidators.email, Validators.minLength(6), Validators.maxLength(150)]],
+      senha: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
     })
   }
 
@@ -92,18 +72,18 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
       .map((formControl: ElementRef) => Observable.fromEvent(formControl.nativeElement, 'blur'));
 
     Observable.merge(...controlBlurs).subscribe(value => {
-      this.displayMessage = this.genericValidator.processMessages(this.inscricaoFormGroup);
+      this.displayMessage = this.genericValidator.processMessages(this.loginForm);
     });
   }
 
-  adicionarUsuario() {
-    if (this.inscricaoFormGroup.dirty && this.inscricaoFormGroup.valid) {
-      // Pegar os dados do formulário(this.inscricaoFormGroup.value) e convertendo para this.usuario
+  logar() {
+    if (this.loginForm.dirty && this.loginForm.valid) {
+      // Pegar os dados do formulário(this.loginForm.value) e convertendo para this.usuario
       // Object.assign => copia os dados de um lado para o outro, isso é do javascript mesmo,
       // como se fosse o automapper mesmo, por isso, as propriedades devem ser iguais
-      let usu = Object.assign({}, this.usuario, this.inscricaoFormGroup.value);
+      let login = Object.assign({}, this.login, this.loginForm.value);
 
-      this.usuarioService.adicionarUsuario(usu)
+      this.usuarioService.logar(login)
       .subscribe(
         result => { this.onSaveComplete(result) },
         error => { this.onErrorComplete(error) }
@@ -114,7 +94,7 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
   onSaveComplete(response: any): void {
 
     // Zera os dados do formulário
-    this.inscricaoFormGroup.reset();
+    this.loginForm.reset();
 
     // Zera a coleção de erros
     this.errors = [];

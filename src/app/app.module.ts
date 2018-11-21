@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http';
 
 // bootstrap
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -19,7 +20,13 @@ import { MenuLoginComponent } from './shared/menu-login/menu-login.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ListaContatosComponent } from './contatos/lista-contatos/lista-contatos.component';
+
+// Componentes de Usuário
 import { InscricaoComponent } from './usuario/inscricao/inscricao.component';
+import { LoginComponent } from './usuario/login/login.component';
+
+// Serviços
+import { UsuarioService } from "./services/usuario.service";
 
 @NgModule({
   declarations: [
@@ -30,18 +37,21 @@ import { InscricaoComponent } from './usuario/inscricao/inscricao.component';
     HomeComponent,
     MenuLoginComponent,
     ListaContatosComponent,
-    InscricaoComponent
+    InscricaoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    // HttpModule,
+    HttpModule,
     CustomFormsModule,
     CarouselModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig, { useHash: false })
   ],
-  providers: [],
+  providers: [
+    UsuarioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

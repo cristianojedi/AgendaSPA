@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-menu-login',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuLoginComponent implements OnInit {
 
-  constructor() { }
+  public nome: string = "";
+  public email: string = "";
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
+  usuarioLogado(): Boolean {
+    this.nome = localStorage.getItem('nome.usuario');
+    this.email = localStorage.getItem('email.usuario');
+
+    this.nome = this.nome !== null && this.nome !== '' ? this.nome : null;
+
+    return this.email !== null;
+  }
+
+  logout() {
+    localStorage.removeItem('nome.usuario');
+    localStorage.removeItem('email.usuario');
+
+    // navigateByUrl força a aplicação ser carregada novamente pela Url
+    this.router.navigateByUrl('/');
+  }
 }
