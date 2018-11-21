@@ -11,9 +11,15 @@ Execute o aplicativo frontend localmente usando o VS Code
 
 ## ng build
 
+![agendaspa1](https://user-images.githubusercontent.com/32333301/48852230-10f16b80-ed94-11e8-92fd-434515d62258.png)
+
 ## ng serve
 
+![agendaspa2](https://user-images.githubusercontent.com/32333301/48852276-26ff2c00-ed94-11e8-8847-2f13f31eacc3.png)
+
 ## running...
+
+![agendaspa3](https://user-images.githubusercontent.com/32333301/48852289-2c5c7680-ed94-11e8-9cd0-89b0c4edf6c8.png)
 
 ## Servidor de Desenvolvimento
 
