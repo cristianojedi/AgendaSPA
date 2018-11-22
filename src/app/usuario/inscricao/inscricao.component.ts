@@ -79,10 +79,10 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
     // Os campos abaixo são os itens do formulário
     this.inscricaoFormGroup = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-        cpf: ['', [Validators.required, CustomValidators.rangeLength([11, 11])]],
-        email: ['', [Validators.required, CustomValidators.email, Validators.minLength(6), Validators.maxLength(150)]],
-        senha: senha,
-        senhaConfirmacao: senhaConfirmacao
+      cpf: ['', [Validators.required, CustomValidators.rangeLength([11, 11])]],
+      email: ['', [Validators.required, CustomValidators.email, Validators.minLength(6), Validators.maxLength(150)]],
+      senha: senha,
+      senhaConfirmacao: senhaConfirmacao
     })
   }
 

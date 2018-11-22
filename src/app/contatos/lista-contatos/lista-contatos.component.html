@@ -1,42 +1,38 @@
 <h2>Lista de Contatos</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-left">
+      <a class="btn btn-primary" id="novoContato" [routerLink]="['/insere-contato']">
+        <span title="Novo Contato" class="glyphicon glyphicon-plus-sign"></span> Novo Contato
+      </a>
+    </div>
+  </div>
+</div>
+<br />
+
 <div class="page-size">
   <div class="panel panel-default">
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Data de Nascimento</th>
-          <th>Data de Cadastro</th>
           <th>Celular</th>
           <th>E-mail</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Cristiano Rocha</td>
-          <td>12/12/2017</td>
-          <td>13/12/2017</td>
-          <td>(31) 99235-1508</td>
-          <td>cristianojedi@gmail.com</td>
+        <tr *ngFor='let contato of contatos'>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.celular }}</td>
+          <td>{{ contato.email }}</td>
           <td>
             <a title="Detalhes" class="btn btn-primary">
-              <span class="glyphicon glyphicon-search"></span> Saber Mais
+              <span class="glyphicon glyphicon-eye-open"></span> Detalhar
             </a>
           </td>
         </tr>
-        <tr>
-          <td>DevXperience</td>
-          <td>01/09/2017</td>
-          <td>02/09/2017</td>
-          <td>(31) 99212-2231</td>
-          <td>devexperience@gmail.com</td>
-          <td>
-            <a title="Detalhes" class="btn btn-primary">
-              <span class="glyphicon glyphicon-search"></span> Saber Mais
-            </a>
-          </td>
-        </tr>      
       </tbody>
     </table>
   </div>

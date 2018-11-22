@@ -10,23 +10,28 @@ import { HttpModule } from '@angular/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CustomFormsModule } from 'ng2-validation'
 
-// Componentes compartilhados
+// componentes compartilhados
 import { MenuSuperiorComponent } from './shared/menu-superior/menu-superior.component';
 import { MainPrincipalComponent } from './shared/main-principal/main-principal.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MenuLoginComponent } from './shared/menu-login/menu-login.component';
 
-// Componentes
+// home
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ListaContatosComponent } from './contatos/lista-contatos/lista-contatos.component';
 
-// Componentes de Usuário
+// contatos
+import { ListaContatosComponent } from './contatos/lista-contatos/lista-contatos.component';
+import { InsereContatoComponent } from './contatos/insere-contato/insere-contato.component';
+
+// usuário
 import { InscricaoComponent } from './usuario/inscricao/inscricao.component';
 import { LoginComponent } from './usuario/login/login.component';
 
-// Serviços
+// serviços
 import { UsuarioService } from "./services/usuario.service";
+import { AuthService } from "./contatos/services/auth.service";
+import { ContatoService } from "./contatos/services/contato.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +43,8 @@ import { UsuarioService } from "./services/usuario.service";
     MenuLoginComponent,
     ListaContatosComponent,
     InscricaoComponent,
-    LoginComponent
+    LoginComponent,
+    InsereContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,9 @@ import { UsuarioService } from "./services/usuario.service";
     RouterModule.forRoot(rootRouterConfig, { useHash: false })
   ],
   providers: [
-    UsuarioService
+    UsuarioService,
+    AuthService,
+    ContatoService
   ],
   bootstrap: [AppComponent]
 })
